@@ -1,0 +1,79 @@
+{
+    "version": 9,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 30
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+            }
+        },
+        {
+            "name": "local_deps",
+            "hidden": true,
+            "inherits": "base",
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_FREERTOS_KERNEL": "${sourceDir}/deps/FreeRTOS-Kernel/"
+            }
+        },
+        {
+            "name": "default",
+            "hidden": true,
+            "inherits": "base"
+        },
+        {
+            "name": "template_cmake",
+            "inherits": "default",
+            "cacheVariables": {
+                "APP_NAME": "template_cmake"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "configurePreset": "default",
+            "cleanFirst": false
+        },
+        {
+            "name": "template_cmake",
+            "inherits": "default",
+            "configurePreset": "template_cmake"
+        }
+    ],
+    "packagePresets": [
+        {
+            "name": "template_cmake",
+            "configurePreset": "template_cmake",
+            "generators": [
+                "TGZ"
+            ]
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "template_cmake",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "template_cmake"
+                },
+                {
+                    "type": "build",
+                    "name": "template_cmake"
+                },
+                {
+                    "type": "package",
+                    "name": "template_cmake"
+                }
+            ]
+        }
+    ]
+}
