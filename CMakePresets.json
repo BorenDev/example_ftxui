@@ -19,19 +19,19 @@
             "hidden": true,
             "inherits": "base",
             "cacheVariables": {
-                "FETCHCONTENT_SOURCE_DIR_FREERTOS_KERNEL": "${sourceDir}/deps/FreeRTOS-Kernel/"
+                "FETCHCONTENT_SOURCE_DIR_FTXUI": "${sourceDir}/deps/FTXUI"
             }
         },
         {
             "name": "default",
             "hidden": true,
-            "inherits": "base"
+            "inherits": "local_deps"
         },
         {
-            "name": "template_cmake",
+            "name": "example_ftxui",
             "inherits": "default",
             "cacheVariables": {
-                "APP_NAME": "template_cmake"
+                "APP_NAME": "example_ftxui"
             }
         }
     ],
@@ -43,15 +43,15 @@
             "cleanFirst": false
         },
         {
-            "name": "template_cmake",
+            "name": "example_ftxui",
             "inherits": "default",
-            "configurePreset": "template_cmake"
+            "configurePreset": "example_ftxui"
         }
     ],
     "packagePresets": [
         {
-            "name": "template_cmake",
-            "configurePreset": "template_cmake",
+            "name": "example_ftxui",
+            "configurePreset": "example_ftxui",
             "generators": [
                 "TGZ"
             ]
@@ -59,19 +59,19 @@
     ],
     "workflowPresets": [
         {
-            "name": "template_cmake",
+            "name": "example_ftxui",
             "steps": [
                 {
                     "type": "configure",
-                    "name": "template_cmake"
+                    "name": "example_ftxui"
                 },
                 {
                     "type": "build",
-                    "name": "template_cmake"
+                    "name": "example_ftxui"
                 },
                 {
                     "type": "package",
-                    "name": "template_cmake"
+                    "name": "example_ftxui"
                 }
             ]
         }

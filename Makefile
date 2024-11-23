@@ -3,10 +3,10 @@ CONTAINER_CMD = podman run -it --rm --name=build_container --mount type=bind,sou
 SHELL_CMD = podman run -it --rm --name=shell --mount type=bind,source=${PWD},target=/workdir arch_mplabx:latest bash
 
 all: \
-	template_cmake
+	example_ftxui
 
-template_cmake:
-	cmake --workflow --preset template_cmake
+example_ftxui:
+	cmake --workflow --preset example_ftxui
 
 clean:
 	rm -rf build/

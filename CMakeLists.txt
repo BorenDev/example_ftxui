@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 
 project(
-  template_cmake
+  example_ftxui
   VERSION 0.1.0
   LANGUAGES CXX)
 
